@@ -15,3 +15,11 @@ $PSStyle.FileInfo.Directory = "`e[31;1m"
 
 # Fix a bug where sometimes nvim is not cleared after exiting.
 $env:TERM='xterm-256color'
+
+# Make wsl start in home
+function wslh {
+    wsl ~ @args
+}
+
+# Set nvim config path to a more practical place
+$env:XDG_CONFIG_HOME="$HOME"
