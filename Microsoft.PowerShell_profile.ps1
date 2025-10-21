@@ -9,3 +9,9 @@ Set-PSReadLineOption -Colors @{ "Emphasis"="red" }
 Set-PSReadLineOption -Colors @{ "Number"="white" }
 Set-PSReadLineOption -Colors @{ "String"="green" }
 Set-PSReadLineOption -Colors @{ "Command"="cyan"}
+
+# More readable color for directories
+$PSStyle.FileInfo.Directory = "`e[31;1m"
+
+# Fix a bug where sometimes nvim is not cleared after exiting.
+$env:TERM='xterm-256color'
