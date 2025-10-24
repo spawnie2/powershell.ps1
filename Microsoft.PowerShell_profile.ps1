@@ -1,6 +1,12 @@
+# Terminal look
 oh-my-posh --init --shell pwsh --config ~/AppData/Local/Programs/oh-my-posh/themes/catppuccin_mocha.omp.json | Invoke-Expression
 
+# Autocomplete for git commands
+Import-Module git-completion
+
+# Autocomplete for general commands, coloring, and other utility.
 Import-Module PSReadLine
+
 Set-PSReadLineOption -Colors @{ "Default"="cyan" }
 Set-PSReadLineOption -Colors @{ "Parameter"="white" }
 Set-PSReadLineOption -Colors @{ "ContinuationPrompt"="cyan"}
@@ -23,3 +29,17 @@ function wslh {
 
 # Set nvim config path to a more practical place
 $env:XDG_CONFIG_HOME="$HOME"
+
+# yazi
+$env:YAZI_FILE_ONE="C:\Program Files\Git\usr\bin\file.exe"
+$env:EDITOR="nvim"
+function y {
+    $tmp = (New-TemporaryFile).FullName
+    yazi $args --cwd-file="$tmp"
+    $cwd = Get-Content -Path $tmp -Encoding UTF8
+    if (-not [String]::IsNullOrEmpty($cwd) -and $cwd -ne $PWD.Path) {
+        Set-Location -LiteralPath (Resolve-Path -LiteralPath $cwd).Path
+    }
+    Remove-Item -Path $tmp
+}
+
