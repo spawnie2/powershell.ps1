@@ -1,5 +1,5 @@
 # Terminal look
-oh-my-posh --init --shell pwsh --config ~/AppData/Local/Programs/oh-my-posh/themes/powerlevel10k_lean.omp.json | Invoke-Expression
+oh-my-posh --init --shell pwsh --config 'C:\Users\jbarthel\AppData\Roaming\rose-pine-omp\dawn.omp.json' | Invoke-Expression
 
 # Autocomplete for git commands
 Import-Module git-completion
