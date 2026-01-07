@@ -30,6 +30,13 @@ function wslh {
     wsl ~ @args
 }
 
+# Aliases
+set-alias fp "FPilot.exe" 
+
+function gst {
+	git status
+}
+
 # Set nvim config path to a more practical place
 $env:XDG_CONFIG_HOME="$HOME"
 
