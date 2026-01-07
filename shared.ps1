@@ -1,5 +1,5 @@
 # Terminal look
-oh-my-posh --init --shell pwsh --config 'C:\Users\jbarthel\AppData\Roaming\rose-pine-omp\dawn.omp.json' | Invoke-Expression
+oh-my-posh --init --shell pwsh --config "$HOME\AppData\Roaming\rose-pine-omp\dawn.omp.json" | Invoke-Expression
 
 # Autocomplete for git commands
 Import-Module git-completion
@@ -7,14 +7,8 @@ Import-Module git-completion
 # Autocomplete for general commands, coloring, and other utility.
 Import-Module PSReadLine
 
-Set-PSReadLineOption -Colors @{ "Default"="cyan" }
-Set-PSReadLineOption -Colors @{ "Parameter"="white" }
-Set-PSReadLineOption -Colors @{ "ContinuationPrompt"="cyan"}
-Set-PSReadLineOption -Colors @{ "Operator"="yellow" }   
-Set-PSReadLineOption -Colors @{ "Emphasis"="red" }
-Set-PSReadLineOption -Colors @{ "Number"="white" }
-Set-PSReadLineOption -Colors @{ "String"="green" }
-Set-PSReadLineOption -Colors @{ "Command"="green"}
+# Colors for fd, etc...
+$env:LS_COLORS = $(vivid.exe generate rose-pine-dawn)
 
 # Mute irritating beeps
 Set-PSReadlineOption -BellStyle None
