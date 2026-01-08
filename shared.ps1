@@ -7,14 +7,11 @@ Import-Module git-completion
 # Autocomplete for general commands, coloring, and other utility.
 Import-Module PSReadLine
 
-Set-PSReadLineOption -Colors @{ "Default"="cyan" }
-Set-PSReadLineOption -Colors @{ "Parameter"="white" }
-Set-PSReadLineOption -Colors @{ "ContinuationPrompt"="cyan"}
-Set-PSReadLineOption -Colors @{ "Operator"="yellow" }   
-Set-PSReadLineOption -Colors @{ "Emphasis"="red" }
-Set-PSReadLineOption -Colors @{ "Number"="white" }
-Set-PSReadLineOption -Colors @{ "String"="green" }
-Set-PSReadLineOption -Colors @{ "Command"="green"}
+Set-PSReadlineOption -Colors @{ "InlinePrediction"="DarkGray"}
+Set-PSReadlineOption -Colors @{ "Command"="DarkCyan"}
+Set-PSReadlineOption -Colors @{ "Parameter"="Green"}
+Set-PSReadlineOption -Colors @{ "String"="Yellow"}
+
 # Colors for fd, etc...
 $env:LS_COLORS = $(vivid.exe generate rose-pine-dawn)
 
