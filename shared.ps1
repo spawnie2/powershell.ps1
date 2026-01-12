@@ -38,6 +38,10 @@ function gst {
 # Set nvim config path to a more practical place
 $env:XDG_CONFIG_HOME="$HOME"
 
+# eza
+function ezal { eza -T -L=1 --icons }
+sal -Name ls -Value ezal
+
 # yazi
 $env:YAZI_FILE_ONE="C:\Program Files\Git\usr\bin\file.exe"
 $env:EDITOR="nvim"
