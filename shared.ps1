@@ -39,8 +39,17 @@ function gst {
 $env:XDG_CONFIG_HOME="$HOME"
 
 # eza
-function ezal { eza -T -L=1 --icons }
+function ezal { 
+	param (
+		$1
+	)
+	eza -T -L=1 --icons $1
+}
 sal -Name ls -Value ezal
+
+# Aliases
+sal -Name fp -Value FPilot.exe
+sal -Name n -Value nvim 
 
 # yazi
 $env:YAZI_FILE_ONE="C:\Program Files\Git\usr\bin\file.exe"
