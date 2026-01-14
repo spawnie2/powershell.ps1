@@ -28,11 +28,17 @@ function wslh {
     wsl ~ @args
 }
 
-# Aliases
-set-alias fp "FPilot.exe" 
-
 function gst {
 	git status
+}
+
+function gog {
+	param ( $1 )
+	git lg $1
+}
+
+function gaa {
+	git add *
 }
 
 # Set nvim config path to a more practical place
@@ -43,7 +49,7 @@ function ezal {
 	param (
 		$1
 	)
-	eza -T -L=1 --icons $1
+	eza -a -T -L=1 --icons $1
 }
 sal -Name ls -Value ezal
 
