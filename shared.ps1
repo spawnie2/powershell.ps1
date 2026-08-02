@@ -1,8 +1,5 @@
-# Terminal look
-oh-my-posh --init --shell pwsh --config "$HOME\AppData\Roaming\rose-pine-omp\dawn.omp.json" | Invoke-Expression
-
-# Autocomplete for git commands
-Import-Module git-completion
+# Terminal look 
+Invoke-Expression (&starship init powershell)
 
 # Autocomplete for general commands, coloring, and other utility.
 Import-Module PSReadLine
@@ -11,6 +8,7 @@ Set-PSReadlineOption -Colors @{ "InlinePrediction"="DarkGray"}
 Set-PSReadlineOption -Colors @{ "Command"="DarkCyan"}
 Set-PSReadlineOption -Colors @{ "Parameter"="Green"}
 Set-PSReadlineOption -Colors @{ "String"="Yellow"}
+
 # Colors for fd, etc...
 $env:LS_COLORS = $(vivid.exe generate rose-pine-dawn)
 
@@ -49,24 +47,28 @@ function ezal {
 	param (
 		$1
 	)
-	eza -a -T -L=1 --icons $1
+	eza --icons -a $1
 }
-sal -Name ls -Value ezal
+
+# eza
+function ezal { 
+	param (
+		$1
+	)
+	eza --icons -a $1
+}
+
+function ezall { 
+	param (
+		$1
+	)
+	eza --icons -al $1
+}
 
 # Aliases
+sal -Name ls -Value ezal
+sal -Name ll -value ezall
 sal -Name fp -Value FPilot.exe
 sal -Name n -Value nvim 
-
-# yazi
-$env:YAZI_FILE_ONE="C:\Program Files\Git\usr\bin\file.exe"
-$env:EDITOR="nvim"
-function y {
-    $tmp = (New-TemporaryFile).FullName
-    yazi $args --cwd-file="$tmp"
-    $cwd = Get-Content -Path $tmp -Encoding UTF8
-    if (-not [String]::IsNullOrEmpty($cwd) -and $cwd -ne $PWD.Path) {
-        Set-Location -LiteralPath (Resolve-Path -LiteralPath $cwd).Path
-    }
-    Remove-Item -Path $tmp
-}
-
+sal -Name cat -Value bat
+sal -Name grep -Value rg
